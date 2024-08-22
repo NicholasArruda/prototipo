@@ -2,5 +2,5 @@
 
 <p align= "center">Repositório para treinamento e A3</p>
 
-### LINK
+### LINK OFF
 - [ ] index.html: https://prototipo-kappa.vercel.app/
