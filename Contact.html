@@ -3,57 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Lista de Presença</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #e2e2e2;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #d1d1d1;
+        }
+
+        .present {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .absent {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .generate-pdf-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .generate-pdf-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Contato</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">QR Code</a></li>
-                <li><a href="contact.html">Presentes</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Clique no seu nome para marcar presença</h2>
-             <ol>
-            <li>Arthur Anael Lima da Silva (1352311310)</li>
-            <li>Caio Renan Silva dos Santos</li>
-            <li>Samuel Almeida</li>
-            <li>Carlos Alberto Gomes</li>
-            <li>Nicholas Arruda Barros de Almeida</li>
-            <li>Danilo Ferriera de Souza (1352220438)</li>
-            <li>Dayvid Araujo </li>
-            <li>Weslley Nascimento Carneiro 135419377</li>
-            <li>Eron Matheus</li>
-            <li>Miguel Estevan Martins de Loiola</li>
-            <li>Gabriel Ferreira Maranhão</li>
-            <li>Guilherme Cavalcanti Bezerra Silva</li>
-            <li>Pedro Vinicius Melo da Silva (1352317613)</li>
-            <li>Guilherme Lacerda Macêdo RA: 1352316811 @Shinrou10</li>
-            <li>Ricardo Alexandre</li>
-            <li>Jerffeson da Silva</li>
-            <li>Ricardo José da Silva</li>
-            <li>Jhonata Gabriel </li>
-            <li>Luquian Cesar</li>
-          </ol>
-        <script>
-            const listItems = document.querySelectorAll('ol li');
-            const listItemsArray = Array.from(listItems);
-            listItemsArray.sort((a, b) => {
-              const textA = a.textContent.toLowerCase();
-              const textB = b.textContent.toLowerCase();
-              return textA.localeCompare(textB);
+    <h1>Lista de Presença</h1>
+    <div class="container">
+        <ul id="attendanceList">
+            <li>
+                <span>Maria Silva</span>
+                <span class="present">Presente</span>
+            </li>
+            <li>
+                <span>João Souza</span>
+                <span class="absent">Ausente</span>
+            </li>
+            <li>
+                <span>Ana Lima</span>
+                <span class="present">Presente</span>
+            </li>
+            <li>
+                <span>Pedro Costa</span>
+                <span class="absent">Ausente</span>
+            </li>
+            <li>
+                <span>Beatriz Almeida</span>
+                <span class="present">Presente</span>
+            </li>
+        </ul>
+        <button class="generate-pdf-btn" onclick="generatePDF()">Gerar PDF</button>
+    </div>
+
+    <!-- jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <script>
+        // Seleciona todos os itens da lista
+        document.querySelectorAll("#attendanceList li").forEach(function(item) {
+            item.addEventListener("click", function() {
+                // Seleciona o segundo span (que mostra o status)
+                var status = this.querySelector("span:last-child");
+
+                // Alterna o status entre "Presente" e "Ausente"
+                if (status.classList.contains("absent")) {
+                    status.classList.remove("absent");
+                    status.classList.add("present");
+                    status.textContent = "Presente";
+                } else {
+                    status.classList.remove("present");
+                    status.classList.add("absent");
+                    status.textContent = "Ausente";
+                }
             });
-            listItemsArray.forEach((item, index) => {
-              document.querySelector('ol').appendChild(item);
+        });
+
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Data e hora atual
+            const currentDate = new Date();
+            const dateString = currentDate.toLocaleDateString('pt-BR');
+            const timeString = currentDate.toLocaleTimeString('pt-BR');
+
+            // Adiciona título, data e hora ao PDF
+            doc.setFontSize(20);
+            doc.text('Lista de Presença', 20, 20);
+            doc.setFontSize(12);
+            doc.text(`Data: ${dateString} Hora: ${timeString}`, 20, 30);
+
+            // Adiciona a lista ao PDF
+            let yPosition = 40;
+            document.querySelectorAll("#attendanceList li").forEach(function(item) {
+                const name = item.querySelector("span:first-child").textContent;
+                const status = item.querySelector("span:last-child").textContent;
+                doc.text(`${name}: ${status}`, 20, yPosition);
+                yPosition += 10;
             });
-          </script>
-    </main>
-    <footer>
-        <p>&copy; 2024 Meu Site</p>
-    </footer>
+
+            // Salva o PDF com um nome padrão
+            doc.save(`Lista_de_Presenca_${dateString}.pdf`);
+        }
+    </script>
 </body>
 </html>
