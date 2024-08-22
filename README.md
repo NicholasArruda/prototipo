@@ -1,4 +1,4 @@
-# Prototipo
+<h1 align="center"> Prototipo </h1>
 
-<p>Repositório para treinamento e A3</p>
-<p>link para o index.html: https://prototipo-tan-delta.vercel.app/</p>
+<p align= "center">Repositório para treinamento e A3</p>
+-link para o index.html: https://prototipo-tan-delta.vercel.app/
