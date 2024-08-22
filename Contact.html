@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Contato</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">QR Code</a></li>
+                <li><a href="contact.html">Presentes</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Clique no seu nome para marcar presença</h2>
+             <ol>
+            <li>Arthur Anael Lima da Silva (1352311310)</li>
+            <li>Caio Renan Silva dos Santos</li>
+            <li>Samuel Almeida</li>
+            <li>Carlos Alberto Gomes</li>
+            <li>Nicholas Arruda Barros de Almeida</li>
+            <li>Danilo Ferriera de Souza (1352220438)</li>
+            <li>Dayvid Araujo </li>
+            <li>Weslley Nascimento Carneiro 135419377</li>
+            <li>Eron Matheus</li>
+            <li>Miguel Estevan Martins de Loiola</li>
+            <li>Gabriel Ferreira Maranhão</li>
+            <li>Guilherme Cavalcanti Bezerra Silva</li>
+            <li>Pedro Vinicius Melo da Silva (1352317613)</li>
+            <li>Guilherme Lacerda Macêdo RA: 1352316811 @Shinrou10</li>
+            <li>Ricardo Alexandre</li>
+            <li>Jerffeson da Silva</li>
+            <li>Ricardo José da Silva</li>
+            <li>Jhonata Gabriel </li>
+            <li>Luquian Cesar</li>
+          </ol>
+        <script>
+            const listItems = document.querySelectorAll('ol li');
+            const listItemsArray = Array.from(listItems);
+            listItemsArray.sort((a, b) => {
+              const textA = a.textContent.toLowerCase();
+              const textB = b.textContent.toLowerCase();
+              return textA.localeCompare(textB);
+            });
+            listItemsArray.forEach((item, index) => {
+              document.querySelector('ol').appendChild(item);
+            });
+          </script>
+    </main>
+    <footer>
+        <p>&copy; 2024 Meu Site</p>
+    </footer>
+</body>
+</html>
