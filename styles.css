@@ -1,45 +1,91 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color:white;
-    margin: 0;
-    padding: 0;
-    background-color: #000000;
-}
-
-header {
-    background-color: #34369e;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-}
-
-main {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
     padding: 20px;
     text-align: center;
 }
 
-footer {
+h1 {
+    color: #f5f5f5;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    margin: 10px 0;
     background-color: #333;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.present {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.absent {
+    color: #f44336;
+    font-weight: bold;
+}
+
+.input-group {
+    margin-top: 5px;
+}
+
+.input-group input {
+    padding: 5px;
+    font-size: 14px;
+    margin-right: 10px;
+    background-color: #424242;
+    color: #e0e0e0;
+    border: 1px solid #666;
+    border-radius: 5px;
+}
+
+.confirm-btn, .revise-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #007bff;
     color: white;
-    text-align: center;
-    padding: 0% 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    image-align: right;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-btn:hover, .revise-btn:hover {
+    background-color: #0056b3;
+}
+
+.generate-pdf-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.generate-pdf-btn:hover {
+    background-color: #0056b3;
 }
