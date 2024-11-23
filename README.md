@@ -1,6 +1,6 @@
 # Lista de Presença
 
-Este é um projeto simples de lista de presença desenvolvido com HTML, CSS e JavaScript. O objetivo deste projeto é permitir que os usuários registrem sua presença em um evento, visualizando a lista de participantes em tempo real.
+Este é um projeto simples de lista de presença desenvolvido com HTML, CSS e JavaScript. O objetivo deste projeto é permitir que os usuários registrem sua presença em um evento, visualizando a lista de participantes gerada por um PDF.
 
 ## Funcionalidades
 
